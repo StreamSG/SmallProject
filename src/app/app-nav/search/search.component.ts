@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AccountsService } from 'src/app/shared/accounts.service';
 
@@ -11,7 +12,7 @@ import { AccountsService } from 'src/app/shared/accounts.service';
 export class SearchComponent {
   accounts: {name: string, status: string}[] = [];
 
-  constructor( private accountsService: AccountsService) {}
+  constructor( private accountsService: AccountsService, private snackBar: MatSnackBar ) {}
 
   keyPressCheck(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
@@ -27,9 +28,12 @@ export class SearchComponent {
     if(name.length === 9) {
       this.accountsService.addAccount(name);
     } else {
-      alert('Please enter a valid 9 digit account number!')
+      this.snackBar.open('Please enter a valid 9 digit account number!', '', {
+        duration: 3000
+      });
     }
   };
+
 
     ngOnInit(): void {
       this.accounts = this.accountsService.accounts

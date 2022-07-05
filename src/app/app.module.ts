@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 
 import { AccountsService } from './shared/accounts.service';
@@ -53,7 +54,8 @@ import { LoggingComponent } from './shared/logging/logging.component';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   providers: [
     AccountsService,
