@@ -11,6 +11,7 @@ import { AccountsService } from 'src/app/shared/accounts.service';
 
 export class SearchComponent {
   accounts: {name: string, status: string}[] = [];
+  count: number;
 
   constructor( private accountsService: AccountsService, private snackBar: MatSnackBar ) {}
 
@@ -25,18 +26,27 @@ export class SearchComponent {
   };
 
   onRunBAN(name: string) {
-    if(name.length === 9) {
-      this.accountsService.addAccount(name);
+    this.count = this.accountsService.count;
+    if(this.count < 5) {
+      this.count++;
+      if(name.length === 9) {
+        this.accountsService.addAccount(name);
+      } else {
+        this.snackBar.open('Please enter a valid 9 digit account number!', '', {
+          duration: 3000
+        });
+      };
     } else {
-      this.snackBar.open('Please enter a valid 9 digit account number!', '', {
-        duration: 3000
+      this.snackBar.open('Max 5 accounts please!', '', {
+        duration: 2000
       });
     }
   };
 
 
     ngOnInit(): void {
-      this.accounts = this.accountsService.accounts
+      this.accounts = this.accountsService.accounts;
+      this.count = this.accountsService.count;
     }
 
 

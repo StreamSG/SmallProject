@@ -6,7 +6,7 @@ import { SettingsComponent } from './app-nav/settings/settings.component';
 import { LoggingComponent } from './shared/logging/logging.component';
 
 const routes: Routes = [
-  { path: '', component: DashComponent},
+  { path: '', component: SearchComponent},
   { path: 'dashboard', component: DashComponent},
   { path: 'search', component: SearchComponent},
   { path: 'log', component: LoggingComponent},

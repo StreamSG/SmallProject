@@ -12,7 +12,7 @@ export class ProfileComponent {
   @Input() id: number;
 
   constructor( private accountsService: AccountsService ) { }
-
+  count: number; 
   onSetTo(status: string) {
     this.accountsService.updateStatus(this.id, status);
   }
@@ -22,6 +22,7 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
+    this.count = this.accountsService.count;
   }
 
 }
